@@ -63,7 +63,10 @@
       max-width: 600px;
       line-height: 1.5;
     }
+    #chapterTextChipmunk{
+      display: none; /* Hide the text initially */
 
+    }
     button {
       padding: 15px 30px;
       margin-top: 20px;
@@ -160,7 +163,7 @@
     <div id="chipmunk-container" style="position: relative; margin-bottom: 20px;">
       <img id="chipmunk" src="assets/chipmunk.png" alt="Cute Chipmunk" style="opacity: 0;">
     </div>
-    <p class="chapter-text">Meet the cutest little creature! Priyu the chipmunk, ready to steal your heart (Oops, sry already stole mine!)</p>
+    <p class="chapter-text" id="chapterTextChipmunk">Meet the cutest little creature! Priyu the chipmunk, ready to steal your heart (Oops, sry already stole mine!)</p>
     <button id="unveilButton" onclick="unveilChipmunk()">Unveil Chipmunk</button>
     <button onclick="scrollToNext('#ending')">Final Chapter</button>
   </div>
@@ -194,6 +197,7 @@
       setTimeout(() => {
         chipmunk.classList.remove('drumroll');
         launchFireworks();
+        showTextWithTypewriterEffect(); // Show the typewriter effect
       }, 2000);
     }
 
@@ -209,6 +213,24 @@
         container.appendChild(firework);
         setTimeout(() => firework.remove(), 1200); // Remove firework after animation
       }
+    }
+
+    function showTextWithTypewriterEffect() {
+      const textElement = document.getElementById('chapterTextChipmunk');
+      textElement.style.display = 'block'; // Make the text visible
+      const text = textElement.innerHTML;
+      textElement.innerHTML = '';
+      let i = 0;
+
+      function typewriter() {
+        if (i < text.length) {
+          textElement.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typewriter, 50); // Adjust speed by changing the timeout
+        }
+      }
+
+      typewriter();
     }
   </script>
 </body>
