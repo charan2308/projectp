@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story Wrapped</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #ff5f6d, #ffc371, #6a11cb, #2575fc);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .title, .subtitle, .chapter-title, .chapter-text, .ending-title {
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .title {
+      font-size: 4em;
+      font-family: 'Roboto', sans-serif;
+      color: #ffeb3b;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .subtitle {
+      font-size: 1.8em;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .chapter-title {
+      font-size: 3em;
+      margin-bottom: 15px;
+      color: #7cffcb;
+    }
+
+    .chapter-text {
+      font-size: 1.5em;
+      color: #ffebf0;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    img {
+      width: 80%;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 25px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+      z-index: 9999;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(20px, -30px) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    .floating-shape:nth-child(odd) {
+      animation-delay: 2s;
+    }
+
+    /* New elements */
+    .giant-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background-color: #ff6b6b;
+      clip-path: polygon(50% 0%, 100% 30%, 100% 80%, 50% 100%, 0% 80%, 0% 30%);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .chipmunk {
+      width: 150px;
+      margin-top: 20px;
+    }
+
+    .musical-note {
+      position: absolute;
+      font-size: 2em;
+      color: rgba(255, 255, 255, 0.6);
+      animation: floatNotes 4s infinite ease-in-out;
+    }
+
+    @keyframes floatNotes {
+      0% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translateY(-30px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Decorations -->
+  <div class="floating-shape" style="top: 10%; left: 20%;"></div>
+  <div class="floating-shape" style="top: 30%; left: 70%;"></div>
+  <div class="floating-shape" style="top: 50%; left: 40%;"></div>
+  <div class="floating-shape" style="top: 70%; left: 15%;"></div>
+  <div class="floating-shape" style="top: 15%; left: 50%;"></div>
+  <div class="floating-shape" style="top: 60%; left: 80%;"></div>
+
+  <!-- Intro Section -->
+  <div class="section" id="intro">
+    <h1 class="title">Our Story Wrapped</h1>
+    <p class="subtitle">A colorful journey of love and magic.</p>
+    <button onclick="scrollToNext('#chapter1')">Start the Journey</button>
+  </div>
+
+  <!-- Chapter 1 -->
+  <div class="section" id="chapter1">
+    <h2 class="chapter-title">Chapter 1: When We Met</h2>
+    <img src="assets/first_meet.jpg" alt="First Meeting">
+    <p class="chapter-text">It all began when I saw you. Your presence painted my world with vibrant colors.</p>
+    <div class="giant-heart"></div>
+    <button onclick="scrollToNext('#chapter2')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 2 -->
+  <div class="section" id="chapter2">
+    <h2 class="chapter-title">Chapter 2: Adventures Together</h2>
+    <img src="assets/adventures.jpg" alt="Adventures">
+    <p class="chapter-text">Every moment with you feels like a song that gets better with every beat.</p>
+    <img src="assets/chipmunk.png" alt="Chipmunk" class="chipmunk">
+    <button onclick="scrollToNext('#ending')">Final Chapter</button>
+  </div>
+
+  <!-- Ending Section -->
+  <div class="section" id="ending">
+    <h1 class="ending-title">You are my Wrapped Playlist of Happiness ❤️</h1>
+    <p>Our memories, like favorite tracks, will always be on repeat.</p>
+    <button onclick="showSurprise()">See the Surprise</button>
+  </div>
+
+  <script>
+    function scrollToNext(sectionId) {
+      const nextSection = document.querySelector(sectionId);
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showSurprise() {
+      alert("You're my number one wrapped memory! ❤️");
+    }
+
+    // Adding floating shapes dynamically
+    document.querySelectorAll('.section').forEach(section => {
+      for (let i = 0; i < 5; i++) {
+        const shape = document.createElement('div');
+        shape.className = 'floating-shape';
+        shape.style.top = Math.random() * 100 + '%';
+        shape.style.left = Math.random() * 100 + '%';
+        section.appendChild(shape);
+      }
+      for (let i = 0; i < 3; i++) {
+        const note = document.createElement('div');
+        note.className = 'musical-note';
+        note.style.top = Math.random() * 100 + '%';
+        note.style.left = Math.random() * 100 + '%';
+        note.textContent = '♪';
+        section.appendChild(note);
+      }
+    });
+  </script>
+</body>
+</html>
