@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .title, .subtitle, .chapter-title, .chapter-text, .ending-title {
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .title {
+      font-size: 3em;
+      color: #fff;
+      font-family: 'Caveat', cursive;
+    }
+
+    .subtitle {
+      font-size: 1.5em;
+      color: #ffe4e1;
+    }
+
+    .chapter-title {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    .chapter-text {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: #ff758c;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff5160;
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 80%;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .heart, .flower, .star, .butterfly {
+      position: absolute;
+      animation: float 6s infinite;
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .heart {
+      background-image: url('assets/heart.png');
+    }
+
+    .flower {
+      background-image: url('assets/flower.png');
+    }
+
+    .star {
+      background-image: url('assets/star.png');
+    }
+
+    .butterfly {
+      background-image: url('assets/butterflies.png');
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+      }
+      100% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+    }
+
+    .heart:nth-child(odd), .flower:nth-child(even), .star:nth-child(3n+1), .butterfly:nth-child(4n) {
+      left: calc(10% + 80% * random);
+      animation-delay: calc(3s * random);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Decorations -->
+  <div class="heart" style="top: 10%; left: 20%;"></div>
+  <div class="flower" style="top: 30%; left: 70%;"></div>
+  <div class="heart" style="top: 50%; left: 40%;"></div>
+  <div class="flower" style="top: 70%; left: 15%;"></div>
+  <div class="star" style="top: 15%; left: 50%;"></div>
+  <div class="butterfly" style="top: 60%; left: 80%;"></div>
+
+  <!-- Intro Section -->
+  <div class="section" id="intro">
+    <h1 class="title">Our Story Begins...</h1>
+    <p class="subtitle">A journey filled with love and happiness.</p>
+    <button onclick="scrollToNext('#chapter1')">Start</button>
+  </div>
+
+  <!-- Chapter 1 -->
+  <div class="section" id="chapter1">
+    <h2 class="chapter-title">Chapter 1: When We Met</h2>
+    <img src="assets/transparent.png" alt="First Meeting" height="60%">
+    <p class="chapter-text">It all started when we first met... your smile lit up the world.</p>
+    <button onclick="scrollToNext('#chapter2')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 2 -->
+  <div class="section" id="chapter2">
+    <h2 class="chapter-title">Chapter 2: Adventures Together</h2>
+    <img src="assets/adventures.jpg" alt="Adventures">
+    <p class="chapter-text">From long walks to spontaneous trips, every moment was special.</p>
+    <button onclick="scrollToNext('#ending')">Final Chapter</button>
+  </div>
+
+  <!-- Ending Section -->
+  <div class="section" id="ending">
+    <h1 class="ending-title">You’re my favorite part of this story ❤️</h1>
+    <p>Happy memories are just the beginning.</p>
+    <button onclick="showSurprise()">See the Surprise</button>
+  </div>
+
+  <script>
+    function scrollToNext(sectionId) {
+      const nextSection = document.querySelector(sectionId);
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showSurprise() {
+      alert("You're the best thing that's ever happened to me! ❤️");
+    }
+
+    // Adding floating elements to all sections dynamically
+    document.querySelectorAll('.section').forEach(section => {
+      const decorations = ['heart', 'flower', 'star', 'butterfly'];
+      for (let i = 0; i < 6; i++) {
+        const decoration = document.createElement('div');
+        decoration.className = decorations[Math.floor(Math.random() * decorations.length)];
+        decoration.style.top = Math.random() * 100 + '%';
+        decoration.style.left = Math.random() * 100 + '%';
+        section.appendChild(decoration);
+      }
+    });
+  </script>
+</body>
+</html>
