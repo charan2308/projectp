@@ -117,7 +117,7 @@
       position: absolute;
       width: 10px;
       height: 10px;
-      background: radial-gradient(circle, #fff, transparent, #ff4500, #1e90ff);
+      background: radial-gradient(circle, #fff, transparent, #ff4500, #1e90ff, #00ff00, #ff69b4);
       border-radius: 50%;
       animation: explode 1.2s ease-out forwards;
       opacity: 0.8;
@@ -125,7 +125,7 @@
 
     @keyframes explode {
       0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(15); opacity: 0; }
+      100% { transform: scale(20); opacity: 0; }
     }
 
     .fireworks-container {
@@ -181,22 +181,19 @@
   <!-- Chapter 3 -->
   <div class="section" id="chapter3">
     <img src="assets/stay_pretty.png" alt="Custom Wrapped 2024" height="75%">
-    <p class="chapter-text">The most beautiful person on this planet, who makes my heart flutter with butterflies every single time.    </p>
+    <p class="chapter-text">The most beautiful person on this planet, who makes my heart flutter with butterflies every single time.</p>
     <button onclick="scrollToNext('#chapter4')">Next Chapter</button>
   </div>
 
   <!-- Chapter 4 -->
   <div class="section" id="chapter4">
-    <!-- <h6 class="chapter-title">A Magical Sunset Moment</h6> -->
     <img src="assets/black_n_white.png" alt="Sunset Moment" height="76%">
-    <p class="chapter-text">
-      It all began with you being someone I couldn't bear to leave</p>
+    <p class="chapter-text">It all began with you being someone I couldn't bear to leave.</p>
     <button onclick="scrollToNext('#chapter5')">Next Chapter</button>
   </div>
 
   <!-- Chapter 5 -->
   <div class="section" id="chapter5">
-    <!-- <h6 class="chapter-title">Dancing Under the Stars</h6> -->
     <img src="assets/doggy.png" alt="Dancing Under the Stars">
     <p class="chapter-text">Not only did you make me fall in love with you, but you also made me fall in love with my first dog, Chinni.</p>
     <button onclick="scrollToNext('#chapter6')">Next Chapter</button>
@@ -204,9 +201,16 @@
 
   <!-- Chapter 6 -->
   <div class="section" id="chapter6">
-    <h6 class="chapter-title">A Sweet Surprise</h6>
-    <img src="assets/surprise.jpg" alt="Sweet Surprise">
-    <p class="chapter-text">A surprise gift appeared, wrapped with love and a thousand memories. It was the perfect way to seal our special day.</p>
+    <img src="assets/selfie_final.png" alt="Sweet Surprise">
+    <p class="chapter-text">My Sweet Paradise !</p>
+    <button onclick="scrollToNext('#chapter7')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 7 -->
+  <div class="section" id="chapter7">
+    <h6 class="chapter-title">A Dream Vacation</h6>
+    <img src="assets/vacation.png" alt="Dream Vacation">
+    <p class="chapter-text">The adventures we dreamed of finally came true. Sunsets, beaches, and the joy of being with you.</p>
     <button onclick="scrollToNext('#ending')">Final Chapter</button>
   </div>
 
@@ -245,7 +249,7 @@
 
     function launchFireworks() {
       const container = document.getElementById('chipmunk-container');
-      const fireworkCount = 12; // Increased number of fireworks
+      const fireworkCount = 20; // Increased number of fireworks
 
       for (let i = 0; i < fireworkCount; i++) {
         const firework = document.createElement('div');
