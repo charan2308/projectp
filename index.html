@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Story Wrapped</title>
+  <title>Enhanced Story Wrapped</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -32,6 +32,7 @@
       text-align: center;
       padding: 10px;
       position: relative;
+      overflow: hidden;
     }
 
     .title, .subtitle, .chapter-title, .chapter-text, .ending-title {
@@ -116,7 +117,7 @@
       position: absolute;
       width: 10px;
       height: 10px;
-      background: radial-gradient(circle, #fff, transparent);
+      background: radial-gradient(circle, #fff, transparent, #ff4500, #1e90ff);
       border-radius: 50%;
       animation: explode 1.2s ease-out forwards;
       opacity: 0.8;
@@ -124,13 +125,30 @@
 
     @keyframes explode {
       0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(10); opacity: 0; }
+      100% { transform: scale(15); opacity: 0; }
     }
 
     .fireworks-container {
       position: relative;
       width: 100%;
       height: 100%;
+    }
+
+    .floating-object {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      opacity: 0.7;
+      z-index: -1;
+      animation: floatAnimation 10s infinite ease-in-out;
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -50px) scale(1.2); }
+      50% { transform: translate(-30px, 50px) scale(0.8); }
+      75% { transform: translate(-50px, -30px) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
     }
   </style>
 </head>
@@ -145,7 +163,7 @@
   <!-- Chapter 1 -->
   <div class="section" id="chapter1">
     <img src="assets/wrapped_banner.png" alt="Custom Wrapped 2024">
-    <p class="chapter-text">Let's unwrap the story of 2024 together.</p>
+    <p class="chapter-text">Let's unwrap 2024 together. Here's your custom album cover, featuring you covered by DBC after your first Capstone review!</p>
     <button onclick="scrollToNext('#chapter2')">Next Chapter</button>
   </div>
 
@@ -157,6 +175,38 @@
     </div>
     <p class="chapter-text" id="chapterTextChipmunk">Meet the cutest little creature! Priyu the chipmunk, ready to steal your heart (Oops, sry already stole mine!)</p>
     <button id="unveilButton" onclick="unveilChipmunk()">Unveil Chipmunk</button>
+    <button onclick="scrollToNext('#chapter3')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 3 -->
+  <div class="section" id="chapter3">
+    <img src="assets/stay_pretty.png" alt="Custom Wrapped 2024" height="75%">
+    <p class="chapter-text">The most beautiful person on this planet, who makes my heart flutter with butterflies every single time.    </p>
+    <button onclick="scrollToNext('#chapter4')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 4 -->
+  <div class="section" id="chapter4">
+    <!-- <h6 class="chapter-title">A Magical Sunset Moment</h6> -->
+    <img src="assets/black_n_white.png" alt="Sunset Moment" height="76%">
+    <p class="chapter-text">
+      It all began with you being someone I couldn't bear to leave</p>
+    <button onclick="scrollToNext('#chapter5')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 5 -->
+  <div class="section" id="chapter5">
+    <!-- <h6 class="chapter-title">Dancing Under the Stars</h6> -->
+    <img src="assets/doggy.png" alt="Dancing Under the Stars">
+    <p class="chapter-text">Not only did you make me fall in love with you, but you also made me fall in love with my first dog, Chinni.</p>
+    <button onclick="scrollToNext('#chapter6')">Next Chapter</button>
+  </div>
+
+  <!-- Chapter 6 -->
+  <div class="section" id="chapter6">
+    <h6 class="chapter-title">A Sweet Surprise</h6>
+    <img src="assets/surprise.jpg" alt="Sweet Surprise">
+    <p class="chapter-text">A surprise gift appeared, wrapped with love and a thousand memories. It was the perfect way to seal our special day.</p>
     <button onclick="scrollToNext('#ending')">Final Chapter</button>
   </div>
 
@@ -195,7 +245,7 @@
 
     function launchFireworks() {
       const container = document.getElementById('chipmunk-container');
-      const fireworkCount = 6; // Number of fireworks
+      const fireworkCount = 12; // Increased number of fireworks
 
       for (let i = 0; i < fireworkCount; i++) {
         const firework = document.createElement('div');
@@ -224,6 +274,43 @@
 
       typewriter();
     }
+
+    function addFloatingObjects() {
+      const sections = document.querySelectorAll('.section'); // Select all sections
+
+      const floatingImages = [
+        'assets/star.png', // Image path for star
+        'assets/heart.png', // Image path for heart
+      ];
+
+      const butterfliesImage = 'assets/butterflies.png'; // Path for butterfly image
+
+      sections.forEach(section => {
+        if (section.id === 'chapter3') {
+          // For Chapter 3, use butterflies
+          for (let i = 0; i < 5; i++) { // Adjust number of butterflies as needed
+            const butterfly = document.createElement('img');
+            butterfly.className = 'floating-object';
+            butterfly.src = butterfliesImage;
+            butterfly.style.top = Math.random() * 100 + '%';
+            butterfly.style.left = Math.random() * 100 + '%';
+            section.appendChild(butterfly);
+          }
+        } else {
+          // For other chapters, use stars and hearts
+          for (let i = 0; i < 5; i++) {
+            const floatingObject = document.createElement('img');
+            floatingObject.className = 'floating-object';
+            floatingObject.src = floatingImages[Math.floor(Math.random() * floatingImages.length)];
+            floatingObject.style.top = Math.random() * 100 + '%';
+            floatingObject.style.left = Math.random() * 100 + '%';
+            section.appendChild(floatingObject);
+          }
+        }
+      });
+    }
+
+    addFloatingObjects();
   </script>
 </body>
 </html>
