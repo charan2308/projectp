@@ -66,7 +66,7 @@
     }
 
     #chapterTextChipmunk {
-      display: none; /* Hide the text initially */
+      display: none;
     }
 
     button {
@@ -101,6 +101,10 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
+    .drumroll {
+      animation: drumroll 0.5s ease-in-out infinite;
+    }
+
     @keyframes drumroll {
       0% { transform: rotate(0); }
       25% { transform: rotate(5deg); }
@@ -109,8 +113,21 @@
       100% { transform: rotate(0); }
     }
 
-    .drumroll {
-      animation: drumroll 0.5s ease-in-out infinite;
+    .floating-object {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      opacity: 0.7;
+      z-index: 50;
+      animation: floatAnimation 10s infinite ease-in-out;
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -50px) scale(1.2); }
+      50% { transform: translate(-30px, 50px) scale(0.8); }
+      75% { transform: translate(-50px, -30px) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
     }
 
     .fireworks {
@@ -134,21 +151,41 @@
       height: 100%;
     }
 
-    .floating-object {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      opacity: 0.7;
-      z-index: -1;
-      animation: floatAnimation 10s infinite ease-in-out;
+    #chapter8 {
+      background: linear-gradient(135deg, #00a9e0, #4f4f4f);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes floatAnimation {
-      0% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -50px) scale(1.2); }
-      50% { transform: translate(-30px, 50px) scale(0.8); }
-      75% { transform: translate(-50px, -30px) scale(1.1); }
-      100% { transform: translate(0, 0) scale(1); }
+    #chapter8 .title {
+      font-size: 3em;
+      color: #ffeb3b;
+    }
+
+    #chapter8 .subtitle {
+      font-size: 1.5em;
+      color: #fff;
+      margin-top: 10px;
+    }
+
+    .achievement-container {
+      margin-top: 30px;
+      padding: 20px;
+    }
+
+    .achievement-img {
+      width: auto;
+      height: auto;
+      margin: 20px 0;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .chapter-text {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -169,12 +206,12 @@
 
   <!-- Chapter 2 -->
   <div class="section" id="chapter2">
-    <h6 class="chapter-title">Unveiling the Cute Chipmunk</h6>
+    <h6 class="chapter-title">Unveiling Something Special</h6>
     <div id="chipmunk-container" style="position: relative; margin-bottom: 20px;">
       <img id="chipmunk" src="assets/chipmunk.png" alt="Cute Chipmunk" style="opacity: 0;">
     </div>
     <p class="chapter-text" id="chapterTextChipmunk">Meet the cutest little creature! Priyu the chipmunk, ready to steal your heart (Oops, sry already stole mine!)</p>
-    <button id="unveilButton" onclick="unveilChipmunk()">Unveil Chipmunk</button>
+    <button id="unveilButton" onclick="unveilChipmunk()">Reveal</button>
     <button onclick="scrollToNext('#chapter3')">Next Chapter</button>
   </div>
 
@@ -208,20 +245,27 @@
 
   <!-- Chapter 7 -->
   <div class="section" id="chapter7">
-    <h6 class="chapter-title">A Dream Vacation</h6>
-    <img src="assets/vacation.png" alt="Dream Vacation">
-    <p class="chapter-text">The adventures we dreamed of finally came true. Sunsets, beaches, and the joy of being with you.</p>
-    <button onclick="scrollToNext('#ending')">Final Chapter</button>
+    <img src="assets/twins.png" alt="Dream Vacation">
+    <p class="chapter-text">Also showed me what twins are made up of!</p>
+    <button onclick="scrollToNext('#chapter8')">Final Chapter</button>
+  </div>
+
+  <!-- Chapter 8: Achievement Unlocked -->
+  <div class="section" id="chapter8">
+    <h1 class="title">Achievement Unlocked!</h1>
+    <img src="assets/job.png" alt="IBM Logo" class="achievement-img">
+    <p class="chapter-text">This is just the beginning of your amazing journey ahead!</p>
+    <button onclick="scrollToNext('#ending')">Return to the Journey</button>
   </div>
 
   <!-- Ending Section -->
   <div class="section" id="ending">
-    <h1 class="ending-title">Our Love Story, Forever Wrapped ❤️</h1>
+    <h1 class="ending-title">Our Story, Forever Wrapped ❤️</h1>
     <p id="quote">"You are the love song I never want to stop singing."</p>
-    <button onclick="showSurprise()">See the Surprise</button>
+    <!-- <button onclick="showSurprise()">See the Surprise</button> -->
     <div class="heart-animation">❤️</div>
   </div>
-
+  
   <script>
     function scrollToNext(sectionId) {
       const nextSection = document.querySelector(sectionId);
